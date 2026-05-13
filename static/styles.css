@@ -295,3 +295,15 @@ input:focus{
   .actions{ justify-content: stretch; }
   .actions .btn{ width: 100%; }
 }
+
+/* Make placeholder text lighter/thinner */
+input::placeholder{
+  color: rgba(100, 116, 139, 0.65); /* slate-like, subtle */
+  font-weight: 400;                /* not bold */
+  opacity: 1;                      /* keep consistent across browsers */
+}
+
+/* Optional: slightly smaller placeholder than typed text */
+input::placeholder{
+  font-size: 13px;
+}
