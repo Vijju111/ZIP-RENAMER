@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>LOG ZIP RENAME</title>
-  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="/static/styles.css" />
 </head>
 <body>
@@ -12,7 +11,7 @@
     <div class="container topbarRow">
       <div class="brand">
         <div class="brandTitle">LOG ZIP RENAME</div>
-        <div class="brandSub">Rename LOG ZIP files inside a ZIP FILE.</div>
+        <div class="brandSub">Rename inner ZIP files inside a container ZIP.</div>
       </div>
 
       <div class="topbarActions">
@@ -29,27 +28,30 @@
       <div class="grid">
         <label class="field">
           <span class="label">Exam Name <span class="req">*</span></span>
-          <input id="exam" type="text" placeholder="NEET" autocomplete="off" />
+          <input id="exam" type="text" autocomplete="off" />
         </label>
 
         <label class="field">
           <span class="label">City <span class="req">*</span></span>
-          <input id="city" type="text" placeholder="DELHI" autocomplete="off" />
+          <input id="city" type="text" autocomplete="off" />
         </label>
 
         <label class="field">
           <span class="label">Center <span class="req">*</span></span>
-          <input id="center" type="text" placeholder="APK" autocomplete="off" />
+          <input id="center" type="text" autocomplete="off" />
         </label>
 
         <label class="field">
           <span class="label">Tech Person <span class="req">*</span></span>
-          <input id="tech" type="text" placeholder="AMIT" autocomplete="off" />
+          <input id="tech" type="text" autocomplete="off" />
         </label>
 
         <label class="field">
           <span class="label">Server Number (2 digits) <span class="req">*</span></span>
           <input id="server_number" type="text" inputmode="numeric" maxlength="2" placeholder="01" />
+          <div class="muted" style="font-size:13px;">
+            Enter 01..99 (this number is used for both MAIN and BACKUP files).
+          </div>
         </label>
 
         <div class="field">
