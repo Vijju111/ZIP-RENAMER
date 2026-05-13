@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LOG ZIP RENAME</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbarRow">
+      <div class="brand">
+        <div class="brandTitle">LOG ZIP RENAME</div>
+        <div class="brandSub">Rename LOG ZIP files inside a ZIP FILE.</div>
+      </div>
+
+      <div class="topbarActions">
+        <a class="btn btnSecondary" href="/usage" target="_blank">Usage / Manual</a>
+        <button class="btn btnSecondary" id="clearBtn" type="button">Clear</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container page">
+    <section class="card">
+      <h2 class="cardTitle">Details</h2>
+
+      <div class="grid">
+        <label class="field">
+          <span class="label">Exam Name <span class="req">*</span></span>
+          <input id="exam" type="text" placeholder="NEET" autocomplete="off" />
+        </label>
+
+        <label class="field">
+          <span class="label">City <span class="req">*</span></span>
+          <input id="city" type="text" placeholder="DELHI" autocomplete="off" />
+        </label>
+
+        <label class="field">
+          <span class="label">Center <span class="req">*</span></span>
+          <input id="center" type="text" placeholder="APK" autocomplete="off" />
+        </label>
+
+        <label class="field">
+          <span class="label">Tech Person <span class="req">*</span></span>
+          <input id="tech" type="text" placeholder="AMIT" autocomplete="off" />
+        </label>
+
+        <label class="field">
+          <span class="label">Server Number (2 digits) <span class="req">*</span></span>
+          <input id="server_number" type="text" inputmode="numeric" maxlength="2" placeholder="01" />
+        </label>
+
+        <div class="field">
+          <span class="label">Date format <span class="req">*</span></span>
+          <div class="row">
+            <label class="checkbox">
+              <input id="dateToggle" type="checkbox" />
+              <span>Use MM-DD-YYYY</span>
+            </label>
+            <div class="muted" style="margin-left:auto;">
+              Selected: <span id="dateLabel">DD-MM-YYYY</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="cardTitle">Upload</h2>
+
+      <div class="dropzone" id="dropzone">
+        <div class="dropText">
+          <div class="dropTitle">Drop container ZIP here</div>
+          <div class="dropSub">or click to select (max 200 MB)</div>
+        </div>
+        <input id="file" type="file" accept=".zip,application/zip" />
+      </div>
+
+      <div id="meta" class="meta"></div>
+
+      <div class="actions">
+        <button id="btn" class="btn btnPrimary">Rename & Download</button>
+      </div>
+
+      <div class="statusArea">
+        <div id="status" class="statusBox"></div>
+        <div class="progress">
+          <div id="bar" class="bar"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

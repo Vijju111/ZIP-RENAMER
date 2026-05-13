@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: ultra-fast-zip-batch-renamer
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -k uvicorn.workers.UvicornWorker -w 2 -t 180 --bind 0.0.0.0:$PORT app.main:app
+    autoDeploy: true

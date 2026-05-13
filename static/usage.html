@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LOG ZIP RENAME - Usage Manual</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbarRow">
+      <div class="brand">
+        <div class="brandTitle">LOG ZIP RENAME — Usage Manual</div>
+        <div class="brandSub">Steps, naming rules, and edge cases.</div>
+      </div>
+
+      <div class="topbarActions">
+        <a class="btn btnSecondary" href="/">Back</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container page">
+    <section class="card prose">
+      <h2>What to upload</h2>
+      <ul>
+        <li>Upload <b>one container ZIP</b> (max 200MB).</li>
+        <li>The container should include multiple <b>inner .zip files</b>.</li>
+        <li>Non-zip files inside the container are skipped.</li>
+      </ul>
+
+      <h2>Required inputs</h2>
+      <ul>
+        <li>Exam, City, Center, Tech (required)</li>
+        <li><b>Server Number</b>: exactly 2 digits (<b>01..99</b>)</li>
+        <li><b>Date format</b>: choose DD-MM-YYYY or MM-DD-YYYY</li>
+      </ul>
+
+      <h2>Detection rules</h2>
+      <ul>
+        <li><b>Server kind</b> is detected from filename text only:
+          <ul>
+            <li><code>TCMAIN</code> / <code>TCMAINSVR</code> → <b>M</b></li>
+            <li><code>TCBACKUP</code> / <code>TCBACKUPSVR</code> → <b>B</b></li>
+          </ul>
+        </li>
+        <li><b>Any digits in the filename</b> like <code>SVR02</code>/<code>SVR03</code> are ignored.</li>
+        <li>Server number used in output is always your input (01..99).</li>
+      </ul>
+
+      <h2>Output name format</h2>
+      <p>
+        <code>EXAM_CITY_CENTER_TECH_{M|B}{SERVER_NUMBER}_DATE.zip</code>
+      </p>
+
+      <h2>Edge cases handled</h2>
+      <ul>
+        <li>Date not found → uses <code>NO-DATE</code> and continues.</li>
+        <li>Server kind not found → uses <code>U##</code> and continues.</li>
+        <li>Duplicate output names → adds <code>_1</code>, <code>_2</code>, …</li>
+        <li>Corrupt/empty ZIP → returns a clear error.</li>
+        <li>Too many users → queued, then returns <code>429</code> if server is busy.</li>
+      </ul>
+
+      <h2>Log file</h2>
+      <p>
+        The output ZIP includes: <code>ULTRA_FAST_ZIP_BATCH_RENAMER_LOG.txt</code>
+      </p>
+    </section>
+  </main>
+</body>
+</html>
